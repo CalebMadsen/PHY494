@@ -1,0 +1,115 @@
+\section*{1.1 Commands}
+
+\subsection*{(a)}
+
+The $\textbf{cd}$ command stands for "change directory", its function is to let you navigate between directories. The $\textbf{pwd}$ command stands for "print working directory" hence, it shows which directory you are currently working within.
+\subsection*{(b)}
+To change to the home directory,from any directory, not necessarily the root, one can do any of the following: cd ~, cd ~/, or cd.
+\subsection*{(c)}
+(i) This is an absolute path since it begin with /home and can be taken from any directory, whereas a relative path would only work within the context of the working directory.
+
+(ii) Given you are in the directory ($\textbf{/home/dvader}$) you should be able to just $\textbf{cd /data/bases}$. This is because the part of the path $\textbf{/home/dvader/Documents/..}$ will take you up one directory from $\textbf{/Documents}$, which implies that the directories $\textbf{/data/bases}$ are subdirectories to $\textbf{/home/dvader}$.
+\subsection*{(d)}
+It would show that you had changed into the home directory, since it's two directories up.
+\subsection*{(e)}
+One way would be to write $\textbf{man frbzz}$, you could also write $\textbf{help frbzz}$, or $\textbf{info frbzz}$. Apparently my computer doesn't have this command.
+\subsection*{(f)Bonus}
+Command line advantages:
+\section*{1.2 Copy, rename, delete}
+
+\begin{verbatim}
+Documents	data
+
+PHY494/01_shell/Documents:
+work
+
+PHY494/01_shell/Documents/work:
+TODO.bak	TODO.txt	hints.txt	homework	lesson.txt
+
+PHY494/01_shell/Documents/work/homework:
+Makefile		homework.log		homework_1.tex
+addtemperatures.py	homework.pdf		populate_inputs.py
+homework.aux		homework.tex		temp.tex
+
+PHY494/01_shell/data:
+bases		biggest_planets	planets.dat	planets_2.dat
+\end{verbatim}
+\section*{1.3 BONUS: Pipes and Filters}
+\subsection*{(a)}
+120
+\subsection*{(b)}
+Bespin
+Kamino
+Malastare
+\subsection*{(c)}
+\begin{verbatim}
+Ryloth               10600  mountains/valleys/deserts/tundra
+Troiken          unknown    desert/tundra/rainforests/mountains
+Mygeeto              10088  glaciers/mountains/icecanyons
+Ojom             unknown    oceans/glaciers
+\end{verbatim}
+\section*{1.4}
+\subsection*{(a)}
+Type $\textbf{ bag[1:3]}$
+\subsection*{(b)}
+Writing $\textbf{bag[::-1]}$ will return the list in reverse. To slice $\textbf{bag}$ to get $\textbf{['towel','tea']}$, type $\textbf{ bag[2:0:-1]}$
+\subsection*{(c)}
+Writing $\textbf{ga[:4]}$ will give "Four" and $\textbf{[15:20]}$ will give "seven".
+\subsection*{(d)}
+(i) $\textbf{bag[0] = 'book'}$ will replace the zeroth index value with 'book'.
+
+(ii) writing $\textbf{bag, mybag, yourbag}$ should give
+
+$\textbf{(['book', 'towel', 'tea', 'mice'],
+ ['book', 'towel', 'tea', 'mice'],
+ ['book', 'towel', 'tea', 42, 'money'])}$
+
+(iii) There doesn't seem to be much difference. Trying to assign x = a, will give an error, unless a is already defined as a list or something, in which case. I cannot tell the difference. 
+
+\subsection*{(e)}
+(i) TypeError: 'str' object does not support item assignment
+
+(ii) Type $\textbf{'Three' + ga[:4]}$
+\subsection*{(f)}
+Writing $\textbf{ga.split()}$ provides a list, in which each word from the string is assigned to a component of the list. Writing $\textbf{a,b,c = ga.split()[:3]}$ has assigned $\textbf{a,b,c}$ to the string values $\textbf{'Four','score'}$ and $\textbf{'seven'}$ respectively, and has simultaneously split each word from $\textbf{ga}$ into their own lists of letters. Writing $\textbf{list([1,2,3])}$ lists the list $\textbf{[1,2,3])}$. The command $\textbf{list(ga)}$ returns a list of the contents of $\textbf{ga}$ but where each letter is it's own part of the list.
+\subsection*{(g)}
+(i) Write $\textbf{bags[0]}$
+
+(ii) Write $\textbf{bags[0][1]}$
+
+(iii) Write $\textbf{bags[1][2]}$
+
+\section*{1.5 Very Simple Temperature Calculator}
+\subsection*{(a)}
+To convert Farenheit to Kelvin, we do
+\begin{equation}
+T = \frac{5}{9}(\theta - 32) + 273.15
+\end{equation}
+So to find $\Delta T = T_{2} - T_{1}$ in terms of $\Delta\theta = \theta_{2} - \theta_{1}$ we just use the equation above and plug in our values for $T$ in terms of $\theta$ as follows
+\begin{align} 
+&T_{2} = \frac{5}{9}(\theta_{2} - 32) + 273.15
+&T_{1} = \frac{5}{9}(\theta_{1} - 32) + 273.15
+\end{align}
+\begin{align}
+&\Delta T = T_{2} - T_{1} = \frac{5}{9}(\theta_{2} - 32) + 275.15 - (\frac{5}{9}(\theta_{1} - 32) + 275.15)\\
+&\fbox{$\Delta T = \frac{5}{9}(\theta_{2} - \theta{1})$}
+\end{align} 
+\subsection*{(b)}
+\begin{verbatim}
+import numpy as np
+
+T = float(input("give me a T:"))
+theta = float(input("give me a theta:"))
+def convert_Farenheit(theta):
+        return  5/9 * (theta - 32) - 273.15
+
+print("T + theta = ",T + convert_Farenheit(theta))
+\end{verbatim}
+\subsection*{(c)}
+\begin{verbatim}
+In [1]: run addtemperatures.py
+give me a T:265
+give me a theta:63
+T + theta =  9.072222222222251
+\end{verbatim}
+
